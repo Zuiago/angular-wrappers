@@ -1,0 +1,18 @@
+<div [ngClass]="colClass">
+  <label for="{{id}}">{{label}}</label>
+  <div class="ui-inputgroup">
+    <div *ngFor="let item of options">
+      <label>{{item[text]}}
+      <input type="radio"
+             name="{{id}}"
+             id="{{id}}"
+             required="{{obrigatorio}}"
+             disabled="{{disabled}}"
+             [checked]="idx === 0"
+             value="{{value ? item[value] : item}}"
+             (change)="choose($event)">
+      </label>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,38 @@
+<div [ngClass]="colClass">
+  <label *ngIf="label" [attr.for]="id ? 'li-text-'+id : identifier">{{label}}</label>
+  <div class="ui-inputgroup">
+    <input [attr.type]="type"
+           [attr.id]="id ? 'li-text-'+id : identifier"
+           [attr.name]="id ? 'li-text-'+id : identifier"
+           [attr.maxlength]="maxlength"
+           [attr.minlength]="minlenght"
+           [disabled]="disabled"
+           [readonly]="readonly"
+           [attr.placeholder]="placeholder"
+           [(ngModel)]="value"
+           pInputText
+           (keyup.enter)="fireOnEnterEvent($event)"/>
+    <button *ngIf="showClean"
+            pButton type="button"
+            icon="fa-times"
+            tabindex="-1"
+            (click)="fireCleanEvent($event);"
+            class="ui-button-secondary">
+    </button>
+    <button *ngIf="additionalButton"
+            pButton
+            type="button"
+            icon="{{additionalButtonIcon}}"
+            tabindex="-1"
+            (click)="fireAdditionalButtonEvent($event);"
+            class="ui-button-secondary">
+    </button>
+  </div>
+  <validation
+    *ngIf="(invalid | async) && !model.control._pristine"
+    [messages]="failures | async">
+  </validation>
+</div>
+
+
+

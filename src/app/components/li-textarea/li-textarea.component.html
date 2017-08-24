@@ -1,0 +1,15 @@
+<div [ngClass]="colClass">
+  <label for="{{id}}">{{label}}</label>
+  <textarea type="textArea"
+            name="{{id}}"
+            id="{{id}}"
+            [disabled]="disabled"
+            cols="{{cols}}"
+            maxlength="maxlength"
+            rows="{{rows}}"
+            required="{{obrigatorio}}"
+            placeholder="{{placeholder}}"
+            ([ngModel])="model"
+            pInputTextarea
+            (keyup.enter)="fireOnEnterEvent()"  [style.resize]="'none'"></textarea>
+</div>

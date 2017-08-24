@@ -1,0 +1,35 @@
+<form #formText="ngForm">
+  <div [ngClass]="colClass">
+    <label for="{{id}}">{{label}}</label>
+    <div class="ui-inputgroup">
+      <select name="{{id}}"
+             [(ngModel)]="value"
+              ngDefaultControl
+             (ngModelChange)="emitValue($event)"
+             id="{{id}}"
+             [disabled]="disabled"
+             required="{{obrigatorio}}"
+             pInputText>
+        <option>Selecione</option>
+      </select>
+      <button *ngIf="showClean"
+              pButton type="button"
+              icon="fa-times"
+              tabindex="-1"
+              (click)="fireCleanEvent();"
+              class="ui-button-secondary">
+      </button>
+      <button *ngIf="additionalButton"
+              pButton
+              type="button"
+              icon="{{additionalButtonIcon}}"
+              tabindex="-1"
+              (click)="fireAdditionalButtonEvent();"
+              class="ui-button-secondary">
+      </button>
+    </div>
+    <pre>form values: <br>{{formText.value | json}}</pre>
+    <pre>model ?: <br>{{formText.valid | json}}</pre>
+  </div>
+</form>
+

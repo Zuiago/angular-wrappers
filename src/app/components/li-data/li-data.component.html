@@ -1,0 +1,27 @@
+<div [ngClass]="colClass">
+  <label *ngIf="label" [attr.for]="id ? 'li-data-'+id : identifier">{{label}}</label>
+
+    <p-calendar
+      [(ngModel)]="value"
+      [showIcon]="showIcon"
+      [minDate]="minDate"
+      [maxDate]="maxDate"
+      [locale]="ptBr"
+      [dateFormat]="dateFormat"
+      [inputId]="id ? 'li-data-'+id : identifier"
+      [placeholder]="placeholder"
+      [disabled]="disabled"
+      [showOnFocus]="showOnFocus"
+      [readonlyInput]="readonly"
+      [yearNavigator]="yearNavigator"
+      [monthNavigator]="monthNavigator"
+      [yearRange]="yearRange">
+    </p-calendar>
+
+  <validation
+    *ngIf="(invalid | async) && !model.control._pristine"
+    [messages]="failures | async">
+  </validation>
+</div>
+
+

@@ -1,0 +1,21 @@
+<div [ngClass]="colClass">
+  <label *ngIf="label" [attr.for]="id ? 'li-autocomplete-'+id : identifier">{{label}}</label>
+  <p-autoComplete
+    [inputId]="id ? 'li-autocomplete-'+id : identifier"
+    [field]="field"
+    [(ngModel)]="value"
+    [suggestions]="sugestoes"
+    (onSelect)="fireOnSelectEvent($event)"
+    [size]="size"
+    [minLength]="minlenght"
+    [disabled]="disabled"
+    [readonly]="readonly"
+    [placeholder]="placeholder"
+    (completeMethod)="fireOnCompleteEvent($event)">
+    <ng-template let-item pTemplate="item">
+      {{dropdownDescription(item)}}
+    </ng-template>
+  </p-autoComplete>
+</div>
+
+

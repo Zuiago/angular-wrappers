@@ -1,0 +1,379 @@
+<p-accordion [activeIndex]="index" (onOpen)="onTabOpen($event)">
+  <p-accordionTab header="DEMO COMPONENTES">
+
+    <h4>NgModel Ex.</h4>
+
+    <form novalidate autocomplete="off" #form="ngForm" (ngSubmit)="onSubmit(form.value)">
+
+      <div class="ui-fluid">
+
+        <div class="row">
+
+          <li-text
+            colClass="ui-g-12 ui-md-6 ui-lg-4"
+            label="INPUT TEXT"
+            name="textvariable"
+            required
+            placeholder="model"
+            [disabled]="false"
+            maxlength="15"
+            minlength="10"
+            [(ngModel)]="textvariable"
+            (onEnter)="testeOnEnter('teste')"
+            [showClean]="true"
+            (onCleanClick)="testeOnClear($event)"
+            [additionalButton]="true"
+            (onAdditionaButtonClick)="showModalClienteZoom()"
+            additionalButtonIcon="fa-search">
+          </li-text>
+
+          <li-inteiro
+            colClass="ui-g-12 ui-md-6 ui-lg-4"
+            label="INPUT INTEGER"
+            name="integervariable"
+            required
+            placeholder="model"
+            [disabled]="false"
+            [min]="0"
+            [max]="50"
+            [(ngModel)]="integervariable"
+            (onEnter)="testeOnEnter('teste')"
+            [showClean]="true"
+            (onCleanClick)="testeOnEnter('teste')"
+            [additionalButton]="true"
+            (onAdditionaButtonClick)="showModalClienteZoom()"
+            additionalButtonIcon="fa-search">
+          </li-inteiro>
+
+          <li-cep
+            colClass="ui-g-12 ui-md-6 ui-lg-4"
+            label="INPUT CEP"
+            name="cepvariable"
+            required
+            cepvalidator
+            placeholder="model"
+            [disabled]="false"
+            [(ngModel)]="cepvariable"
+            (onEnter)="testeOnEnter('testeCEP')"
+            [showClean]="true"
+            (onCleanClick)="testeOnEnter('testeCEP')"
+            [additionalButton]="true"
+            (onAdditionaButtonClick)="showModalClienteZoom()"
+            additionalButtonIcon="fa-search">
+          </li-cep>
+
+        </div>
+
+        <div class="row">
+          <li-cpf
+            colClass="ui-g-12 ui-md-6 ui-lg-4"
+            label="INPUT CPF"
+            name="cpfvariable"
+            cpfvalidator
+            required
+            placeholder="model"
+            [disabled]="false"
+            [(ngModel)]="cpfvariable"
+            (onEnter)="testeOnEnter('testecpf')"
+            [showClean]="true"
+            (onCleanClick)="testeOnEnter('testecpf')"
+            [additionalButton]="true"
+            (onAdditionaButtonClick)="showModalClienteZoom()"
+            additionalButtonIcon="fa-search">
+          </li-cpf>
+
+          <li-cnpj
+            colClass="ui-g-12 ui-md-6 ui-lg-4"
+            label="INPUT CNPJ"
+            name="cnpjvariable"
+            cnpjvalidator
+            required
+            placeholder="model"
+            [disabled]="false"
+            [(ngModel)]="cnpjvariable"
+            (onEnter)="testeOnEnter('testecnpj')"
+            [showClean]="true"
+            (onCleanClick)="testeOnEnter('testecnpj')"
+            [additionalButton]="true"
+            (onAdditionaButtonClick)="showModalClienteZoom()"
+            [additionalButtonIcon]="'fa-search'">
+          </li-cnpj>
+
+          <li-cpf-cnpj
+            colClass="ui-g-12 ui-md-6 ui-lg-4"
+            label="INPUT CPF/CNPJ"
+            name="cpfcnpjvariable"
+            cpfcnpjvalidator
+            required
+            placeholder="model"
+            [disabled]="false"
+            [(ngModel)]="cpfcnpjvariable"
+            (onEnter)="testeOnEnter('testecpfcnpj')"
+            [showClean]="true"
+            (onCleanClick)="testeOnEnter('testecpfcnpj')"
+            [additionalButton]="true"
+            (onAdditionaButtonClick)="showModalClienteZoom()"
+            [additionalButtonIcon]="'fa-search'">
+          </li-cpf-cnpj>
+
+        </div>
+
+        <div class="row">
+
+          <li-money
+            colClass="ui-g-12 ui-md-6 ui-lg-4"
+            label="INPUT MONEY"
+            name="moneyvariable"
+            required
+            placeholder="model"
+            [disabled]="false"
+            [(ngModel)]="moneyvariable"
+            (onEnter)="testeOnEnter('teste')"
+            [showClean]="true"
+            (onCleanClick)="testeOnEnter($event)"
+            [additionalButton]="true"
+            (onAdditionaButtonClick)="showModalClienteZoom()"
+            additionalButtonIcon="fa-search">
+          </li-money>
+
+          <li-data
+            colClass="ui-g-12 ui-md-6 ui-lg-4"
+            label="Calendario"
+            name="datevariable"
+            required
+            placeholder="model"
+            [disabled]="false"
+            [(ngModel)]="datevariable"
+            [showIcon]="true"
+            [minDate]="minDate"
+            [showOnFocus]="false"
+            dateFormat="dd/mm/yy"
+            (onFocus)="testeOnFocus('focus')"
+            (onBlur)="testeOnBlur('blur')"
+            (onSelect)="testeOnEnter('data')">
+          </li-data>
+
+          <li-autoselect
+            colClass="ui-g-12 ui-md-6 ui-lg-4"
+            label="INPUT AUTO SELECT"
+            name="autoselectvariable"
+            placeholder="model"
+            field="descricao"
+            required
+            [dropdownProperties]="['codigo', 'descricao']"
+            [size]="30"
+            [options]="brands"
+            [disabled]="false"
+            [(ngModel)]="autoselectvariable"
+            (onSelect)="testeOnEnter('teste')">
+          </li-autoselect>
+
+        </div>
+
+        <button pButton type="submit"
+                [disabled]="!form.valid"
+                class="ui-button-secondary"
+                icon="fa fa-times-circle"
+                label="Submit">
+        </button>
+
+        <!--<li-select [colClass]="'ui-g-12 ui-md-6 ui-lg-3'"-->
+        <!--[label]="'SELECT DROPDOWN'"-->
+        <!--[options]="cities"-->
+        <!--(onChange)="testeOnEnter('testeSelect')"-->
+        <!--(onFocus)="testeOnFocus('focus')"-->
+        <!--(onBlur)="testeOnBlur('blur')">-->
+        <!--</li-select>-->
+
+        <!--<li-radio [colClass]="'ui-g-12 ui-md-6 ui-lg-3'"-->
+        <!--[label]="'Radio:'"-->
+        <!--[id]="'radio'"-->
+        <!--[options]="itens"-->
+        <!--[value]="'id'"-->
+        <!--[text]="'descricao'"-->
+        <!--(onChange)="testeOnEnter('testeRadio')"></li-radio>-->
+
+        <!--<li-radio-prime-ng [colClass]="'ui-g-12 ui-md-6 ui-lg-3'"-->
+        <!--[label]="'Radio:'"-->
+        <!--[id]="'radioPrime'"-->
+        <!--[options]="itens"-->
+        <!--[value]="'id'"-->
+        <!--[text]="'descricao'"-->
+        <!--(onChange)="testeOnEnter('testeRadio')"></li-radio-prime-ng>-->
+
+        <!--<li-data [colClass]="'ui-g-12 ui-md-6 ui-lg-3'"-->
+        <!--[label]="'Calendario'"-->
+        <!--[showIcon]="true"-->
+        <!--[minDate]="minDate"-->
+        <!--[showOnFocus]="false"-->
+        <!--[inputId]="'calendario'"-->
+        <!--[placeholder]="'Data'"-->
+        <!--[disabled]="false"-->
+        <!--[dateFormat]="'mm/dd/yy'"-->
+        <!--[obrigatorio]="true"-->
+        <!--(onFocus)="testeOnFocus('focus')"-->
+        <!--(onBlur)="testeOnBlur('blur')"-->
+        <!--(onSelect)="testeOnEnter('data')"></li-data>-->
+      </div>
+
+    </form>
+
+    <h4>Reactive Forms Ex</h4>
+
+    <form novalidate autocomplete="off" [formGroup]="reactiveForm" (ngSubmit)="onSubmit(reactiveForm.value)">
+
+      <div class="ui-fluid">
+
+        <div class="row">
+          <li-text
+            colClass="ui-g-12 ui-md-6 ui-lg-4"
+            name="textvariable"
+            label="INPUT TEXT"
+            placeholder="form"
+            formControlName="textvariable"
+            (onEnter)="testeOnEnter('teste')"
+            [showClean]="true"
+            (onCleanClick)="testeOnClear($event)"
+            [additionalButton]="true"
+            (onAdditionaButtonClick)="showModalClienteZoom()"
+            [additionalButtonIcon]="'fa-search'">
+          </li-text>
+
+          <li-inteiro
+            colClass="ui-g-12 ui-md-6 ui-lg-4"
+            name="integervariable"
+            label="INPUT INTEGER"
+            placeholder="form"
+            formControlName="integervariable"
+            [min]="0"
+            [max]="50"
+            (onEnter)="testeOnEnter('teste')"
+            [showClean]="true"
+            (onCleanClick)="testeOnEnter('teste')"
+            [additionalButton]="true"
+            (onAdditionaButtonClick)="showModalClienteZoom()"
+            [additionalButtonIcon]="'fa-search'">
+          </li-inteiro>
+
+          <li-cep
+            colClass="ui-g-12 ui-md-6 ui-lg-4"
+            label="INPUT CEP"
+            name="cepvariable"
+            cepvalidator
+            placeholder="form"
+            formControlName="cepvariable"
+            (onEnter)="testeOnEnter('testeCEP')"
+            [showClean]="true"
+            (onCleanClick)="testeOnEnter('testeCEP')"
+            [additionalButton]="true"
+            (onAdditionaButtonClick)="showModalClienteZoom()"
+            [additionalButtonIcon]="'fa-search'">
+          </li-cep>
+        </div>
+
+        <div class="row">
+          <li-cpf
+            colClass="ui-g-12 ui-md-6 ui-lg-4"
+            label="INPUT CPF"
+            name="cpfvariable"
+            cpfvalidator
+            placeholder="form"
+            formControlName="cpfvariable"
+            (onEnter)="testeOnEnter('testecpf')"
+            [showClean]="true"
+            (onCleanClick)="testeOnEnter('testecpf')"
+            [additionalButton]="true"
+            (onAdditionaButtonClick)="showModalClienteZoom()"
+            [additionalButtonIcon]="'fa-search'">
+          </li-cpf>
+
+          <li-cnpj
+            colClass="ui-g-12 ui-md-6 ui-lg-4"
+            label="INPUT CNPJ"
+            name="cnpjvariable"
+            cnpjvalidator
+            placeholder="form"
+            formControlName="cnpjvariable"
+            (onEnter)="testeOnEnter('testecnpj')"
+            [showClean]="true"
+            (onCleanClick)="testeOnEnter('testecnpj')"
+            [additionalButton]="true"
+            (onAdditionaButtonClick)="showModalClienteZoom()"
+            [additionalButtonIcon]="'fa-search'">
+          </li-cnpj>
+
+          <li-cpf-cnpj
+            colClass="ui-g-12 ui-md-6 ui-lg-4"
+            label="INPUT CPF/CNPJ"
+            name="cpfcnpjvariable"
+            cpfcnpjvalidator
+            placeholder="form"
+            formControlName="cpfcnpjvariable"
+            (onEnter)="testeOnEnter('testecpfcnpj')"
+            [showClean]="true"
+            (onCleanClick)="testeOnEnter('testecpfcnpj')"
+            [additionalButton]="true"
+            (onAdditionaButtonClick)="showModalClienteZoom()"
+            [additionalButtonIcon]="'fa-search'">
+          </li-cpf-cnpj>
+        </div>
+
+        <div class="row">
+
+          <li-money
+            colClass="ui-g-12 ui-md-6 ui-lg-4"
+            label="INPUT MONEY"
+            name="moneyvariable"
+            placeholder="form"
+            formControlName="moneyvariable"
+            (onEnter)="testeOnEnter('teste')"
+            [showClean]="true"
+            (onCleanClick)="testeOnEnter($event)"
+            [additionalButton]="true"
+            (onAdditionaButtonClick)="showModalClienteZoom()"
+            [additionalButtonIcon]="'fa-search'">
+          </li-money>
+
+          <li-data
+            colClass="ui-g-12 ui-md-6 ui-lg-4"
+            label="Calendario"
+            name="datevariable"
+            required
+            placeholder="model"
+            formControlName="datevariable"
+            [showIcon]="true"
+            [minDate]="minDate"
+            [showOnFocus]="false"
+            dateFormat="dd/mm/yy"
+            (onFocus)="testeOnFocus('focus')"
+            (onBlur)="testeOnBlur('blur')"
+            (onSelect)="testeOnEnter('data')">
+          </li-data>
+
+          <li-autoselect
+            colClass="ui-g-12 ui-md-6 ui-lg-4"
+            label="INPUT AUTO SELECT"
+            name="autoselectvariable"
+            placeholder="model"
+            field="descricao"
+            formControlName="autoselectvariable"
+            required
+            [dropdownProperties]="['codigo', 'descricao']"
+            [size]="30"
+            [options]="brands"
+            (onSelect)="testeOnEnter('teste')">
+          </li-autoselect>
+
+        </div>
+
+        <button pButton type="submit"
+                [disabled]="!reactiveForm.valid"
+                class="ui-button-secondary"
+                icon="fa fa-times-circle"
+                label="Submit">
+        </button>
+
+      </div>
+    </form>
+  </p-accordionTab>
+</p-accordion>

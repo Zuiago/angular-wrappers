@@ -1,0 +1,37 @@
+<div [ngClass]="colClass">
+  <label *ngIf="label" [attr.for]="id ? 'li-cpf-cnpj-'+id : identifier">{{label}}</label>
+  <div class="ui-inputgroup">
+    <input [attr.type]="type"
+           [attr.id]="id ? 'li-cpf-cnpj-'+id : identifier"
+           [attr.name]="id ? 'li-cpf-cnpj-'+id : identifier"
+           [attr.maxlength]="maxlength"
+           [attr.minlength]="minlenght"
+           [disabled]="disabled"
+           [readonly]="readonly"
+           [attr.placeholder]="placeholder"
+           [(ngModel)]="value"
+           BrCpfCnpjMask
+           pInputText
+           (keyup.enter)="fireOnEnterEvent()"/>
+    <button *ngIf="showClean"
+            pButton type="button"
+            icon="fa-times"
+            tabindex="-1"
+            (click)="fireCleanEvent();"
+            class="ui-button-secondary">
+    </button>
+    <button *ngIf="additionalButton"
+            pButton
+            type="button"
+            icon="{{additionalButtonIcon}}"
+            tabindex="-1"
+            (click)="fireAdditionalButtonEvent();"
+            class="ui-button-secondary">
+    </button>
+  </div>
+  <validation
+    *ngIf="(invalid | async) && !model.control._pristine"
+    [messages]="failures | async">
+  </validation>
+</div>
+
